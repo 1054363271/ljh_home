@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, and, address, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, input, textarea, select {
+            background: transparent;
+            border: 0;
+            font-size: 100%;
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            vertical-align: baseline
+        }
+
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+            display: block
+        }
+
+        body {
+            line-height: 1
+        }
+
+        abbr[title], dfn[title] {
+            border-bottom: 1px dotted;
+            cursor: help
+        }
+
+        blockquote, q {
+            quotes: none
+        }
+
+        blockquote:before, blockquote:after, q:before, q:after {
+            content: none
+        }
+
+        del {
+            text-decoration: line-through
+        }
+
+        hr {
+            background: transparent;
+            border: 0;
+            clear: both;
+            color: transparent;
+            height: 1px;
+            margin: 0;
+            padding: 0
+        }
+
+        mark {
+            background-color: #ffffb3;
+            font-style: italic
+        }
+
+        input, select {
+            vertical-align: middle
+        }
+
+        ins {
+            background-color: red;
+            color: white;
+            text-decoration: none
+        }
+
+        ol, ul {
+            list-style: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(images/bg.jpg) repeat;
+        }
+
+        .jp-video {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            position: relative;
+
+            -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+            -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+            background: #000;
+        }
+
+        .jp-video-360p {
+            width: 570px;
+            margin: 100px auto;
+        }
+
+        .jp-video-full {
+            width: 480px;
+            height: 270px;
+            position: static !important;
+            position: relative;
+        }
+
+        .jp-video-full .jp-jplayer {
+            top: 0;
+            left: 0;
+            position: fixed !important;
+            position: relative; /* Rules for IE6 (full-screen) */
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .jp-video-full .jp-gui {
+            position: fixed !important;
+            position: static; /* Rules for IE6 (full-screen) */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+        }
+
+        .jp-video-full .jp-interface {
+            position: absolute !important;
+            position: relative; /* Rules for IE6 (full-screen) */
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .jp-interface {
+            position: relative;
+            width: 100%;
+            height: 35px;
+
+            background-image: -webkit-linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+            background-image: -moz-linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+            background-image: -o-linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+            background-image: -ms-linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+            background-image: linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#f2f2f2', EndColorStr='#d1d1d1');
+
+            -webkit-box-shadow: inset 0px 1px 0px #f7f7f7,
+            inset 0px -1px 0px #e2e2e2;
+            -moz-box-shadow: inset 0px 1px 0px #f7f7f7,
+            inset 0px -1px 0px #e2e2e2;
+            box-shadow: inset 0px 1px 0px #f7f7f7,
+            inset 0px -1px 0px #e2e2e2;
+        }
+
+        div.jp-controls-holder {
+            clear: both;
+            width: 570px;
+            margin: 0 auto;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        a.jp-play,
+        a.jp-pause {
+            width: 40px;
+            height: 35px;
+            float: left;
+            text-indent: -9999px;
+            outline: none;
+        }
+
+        a.jp-play {
+            background: url(images/sprite.png) 0 0 no-repeat;
+        }
+
+        a.jp-pause {
+            background: url(images/sprite.png) -40px 0 no-repeat;
+            display: none;
+        }
+
+        #separator {
+            background-image: url(images/separator.png);
+            background-repeat: no-repeat;
+            width: 2px;
+            height: 35px;
+            float: left;
+            margin-top: 7px;
+            margin-right: 10px;
+        }
+
+        .jp-progress {
+            background: #706d6d;
+
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+
+            -webkit-box-shadow: inset 0px 1px 4px rgba(0, 0, 0, .4),
+            0px 1px 0px rgba(255, 255, 255, .4);
+            -moz-box-shadow: inset 0px 1px 4px rgba(0, 0, 0, .4),
+            0px 1px 0px rgba(255, 255, 255, .4);
+            box-shadow: inset 0px 1px 4px rgba(0, 0, 0, .4),
+            0px 1px 0px rgba(255, 255, 255, .4);
+
+            width: 280px;
+            height: 10px;
+            float: left;
+            margin-top: 13px;
+        }
+
+        .jp-seek-bar {
+            width: 0px;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .jp-seeking-bg {
+            background: #575555;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .jp-play-bar {
+            background: url(images/play-bar.png) left repeat-x;
+            width: 0px;
+            height: 10px;
+            position: relative;
+            z-index: 9999;
+
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .jp-play-bar span {
+            position: absolute;
+            top: -3px;
+            right: -12px;
+
+            background: url(images/handle.png) no-repeat center;
+            width: 16px;
+            height: 17px;
+        }
+
+        .jp-current-time,
+        .jp-duration {
+            font-size: 11px;
+            font-family: Arial;
+            color: #444444;
+            margin-top: 13px;
+            float: left;
+        }
+
+        .jp-current-time {
+            float: left;
+            display: inline;
+        }
+
+        .jp-duration {
+            float: left;
+            display: inline;
+            text-align: right;
+        }
+
+        .jp-video .jp-current-time {
+            margin-left: 10px;
+        }
+
+        .jp-video .jp-duration {
+            margin-right: 10px;
+        }
+
+        .time-sep {
+            float: left;
+            margin: 13px 3px 0 3px;
+
+            font-size: 11px;
+            font-family: Arial;
+            color: #444444;
+        }
+
+        .jp-video a.jp-mute,
+        .jp-video a.jp-unmute {
+            text-indent: -9999px;
+            float: left;
+
+            height: 35px;
+            outline: none;
+        }
+
+        .jp-mute {
+            float: left;
+            background: url(images/sprite.png) -80px 0 no-repeat;
+            margin-top: 1px;
+            margin-left: -10px;
+            width: 35px;
+        }
+
+        a.jp-unmute {
+            background: url(images/sprite.png) -115px 0 no-repeat;
+            margin-top: 1px;
+            margin-left: -13px;
+            display: none;
+            width: 38px;
+        }
+
+        .jp-volume-bar {
+            float: left;
+            margin-top: 13px;
+            margin-right: 10px;
+            overflow: hidden;
+            width: 70px;
+            height: 10px;
+            cursor: pointer;
+
+            background: #706d6d;
+
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+
+            -webkit-box-shadow: inset 0px 1px 4px rgba(0, 0, 0, .4),
+            0px 1px 0px rgba(255, 255, 255, .4);
+            -moz-box-shadow: inset 0px 1px 4px rgba(0, 0, 0, .4),
+            0px 1px 0px rgba(255, 255, 255, .4);
+            box-shadow: inset 0px 1px 4px rgba(0, 0, 0, .4),
+            0px 1px 0px rgba(255, 255, 255, .4);
+        }
+
+        .jp-volume-bar-value {
+            background: rgba(112, 109, 109, 1);
+            width: 0px;
+            height: 10px;
+            position: relative;
+            min-width: 11px;
+        }
+
+        .jp-volume-bar-value span {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+
+            background: url(images/volume.png) no-repeat center;
+            width: 11px;
+            height: 10px;
+        }
+
+        .jp-full-screen {
+            background: url(images/sprite.png) -150px 0 no-repeat;
+            float: left;
+            width: 40px;
+            height: 35px;
+            text-indent: -9999px;
+            margin-left: -10px;
+            outline: none;
+        }
+
+        .jp-restore-screen {
+            background: url(images/sprite.png) -150px 0 no-repeat;
+            float: left;
+            width: 40px;
+            height: 35px;
+            text-indent: -9999px;
+            margin-left: -15px;
+            outline: none;
+
+        }
+
+        .box {
+            width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #video {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+  <h1 style="text-align: center;color: chartreuse;">刘佳豪</h1>
+<div class="box">
+    <video id="video">
+        <source src="video/video.webm"/>
+        <source src="video/video.mp4"/>
+    </video>
+    <div class="jp-gui">
+        <div class="jp-interface">
+            <div class="jp-controls-holder">
+                <!--播放和暂停按钮-->
+                <a href="javascript:;" class="jp-play" tabindex="1" style="display: block;">play</a>
+                <a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">pause</a>
+                <span class="separator sep-1"></span>
+
+                <!--进度条-->
+                <div class="jp-progress">
+                    <div class="jp-seek-bar" style="width: 100%;">
+                        <div class="jp-play-bar" style="width: 0%;"><span></span></div>
+                    </div>
+                </div>
+
+                <!--当前播放事件和总视频时间-->
+                <div class="jp-current-time" style="padding: 0 2px 0 5px;">00:00</div>
+                <span class="time-sep">/</span>
+                <div class="jp-duration" style="padding: 0 5px 0 2px;">01:11</div>
+
+                <!--声音进度条-->
+                <div class="jp-volume-bar">
+                    <div class="jp-volume-bar-value" style="width: 90%;"><span class="handle"></span></div>
+                </div>
+
+                <!--全屏按钮-->
+                <a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  var time = 2;
+    var video = document.getElementById("video");
+    var play = document.getElementsByClassName("jp-play")[0];
+    var pause = document.getElementsByClassName("jp-pause")[0];
+    var seek = document.getElementsByClassName("jp-seek-bar")[0];
+    var playbar = document.getElementsByClassName("jp-play-bar")[0];
+    var duration = document.getElementsByClassName("jp-duration")[0];
+    var  current = document.getElementsByClassName("jp-current-time")[0];
+    var volume = document.getElementsByClassName("jp-volume-bar")[0];
+    var currvolume = document.getElementsByClassName("jp-volume-bar-value")[0];
+    var  full= document.getElementsByClassName("jp-full-screen")[0];
+    video.addEventListener("canplay",function(){
+      //播放
+      play.addEventListener("click",function(){
+        video.play();
+        play.style.display="none";
+        pause.style.display="block";
+      })
+      //暂停
+      pause.addEventListener("click",function(){
+        video.pause();
+        play.style.display="block";
+        pause.style.display="none";
+      })
+       //显示视频总长度
+      //  alert(video.duration);
+      duration.innerHTML= totime(video.duration);
+      // alert(duration.innerHTML);
+      //进度条实时更新（顺带更新当前时间）
+      video.addEventListener("timeupdate",function(){
+              current.innerHTML=totime(video.currentTime);
+              playbar.style.width=(video.currentTime/video.duration)*100+"%";
+            })
+      //点击进度条，更新视频时间
+            seek.addEventListener("click",function(even){
+              var currx = even.offsetX;
+              var allx = this.offsetWidth;
+              var bl = currx/allx;
+              playbar.style.width = bl*100 + "%";
+              video.currentTime = bl *video.duration;
+            })
+     
+      //调节音量
+            volume.addEventListener("click",function(even){
+              var currx = even.offsetX;
+              var allx = this.offsetWidth;
+              var bl = currx/allx;
+              video.volume = bl;
+              currvolume.style.width = bl*100+"%";
+            })
+      //循环播放
+            video.addEventListener("ended",function(){
+              video.currentTime=0;
+              if(video.paused){
+                play.style.display="block";
+        pause.style.display="none";
+              }
+            }) 
+      //全屏操作
+            full.addEventListener("click",function(){
+              video.requestFullscreen();
+            })
+
+      //空格和Enter暂停播放事件
+      document.addEventListener('keyup',function(e){
+        
+      if(video.paused){
+        if(e.keyCode==13){
+        video.play();
+        play.style.display="none";
+        pause.style.display="block";
+      }
+      if(e.keyCode==32){
+        video.play();
+        play.style.display="none";
+        pause.style.display="block";
+      }
+      
+      }
+      else{
+        if(e.keyCode==32){
+        video.pause();
+        play.style.display="block";
+        pause.style.display="none";
+      }
+      if(e.keyCode==13){
+        video.pause();
+        play.style.display="block";
+        pause.style.display="none";
+      }
+      }
+      
+    });
+    // console.log(parseInt(playbar.style.width)/100);
+    //左右键快进事件
+    // seek.addEventListener("click",function(even){
+    //           var currx = even.offsetX;
+    //           var allx = this.offsetWidth;
+    //           var bl = currx/allx;
+    //           playbar.style.width = bl*100 + "%";
+    //           video.currentTime = bl *video.duration;
+    //         })
+    document.onkeyup=function(event){
+      var e = event || window.event || arguments.callee.caller.arguments[0];
+      if(e.keyCode===37){
+        video.currentTime !==0 ? video.currentTime -= time : 1;
+      }
+      if(e.keyCode===39){
+        
+      }
+    }
+    // document.addEventListener('keydown',function(e){
+    //   console.log('-----------------------'+e.keyCode);
+    //   if(e.keyCode===37){
+    //     video.currentTime !==0 ? video.currentTime -= time : 1;
+    //    playbar.style.width =(playbar.style.width)-2+"%";
+    //    console.log(1);
+        
+    //   }else if(e.keyCode===39){
+    //     video.currentTime+=5;
+    //    playbar.style.width = (playbar.style.width)+2+"%";
+    //    console.log(parseInt(playbar.style.width));
+       
+    //   }
+    // });
+    
+    },false)//执行时机  true 在句首执行  false 在句柄执行（默认）
+   
+    function totime(num){
+        var m =Math.floor(num/60);
+        m = m > 9? m: '0'+ m;
+        var s= Math.floor(num%60);
+        s = s > 9? s:'0'+ s;
+        return m +":"+s;
+      }
+</script>
+</body>
+</html>

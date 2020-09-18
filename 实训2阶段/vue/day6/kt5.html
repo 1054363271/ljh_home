@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <div>
+      <my-content>
+        <h1 slot="one">我是新插进来的</h1>
+        <h2 slot="two">我是后插进来的</h2>
+      </my-content>
+     </div>
+    <!-- <parent></parent> -->
+  </div>
+  <template id="myCom">
+    <div>
+     <p>我在头部</p>
+     <slot name="one">我是第一个插槽</slot>
+     <p>我在尾部</p>
+     <slot name="two">我是第二个插槽</slot>
+    </div>
+  </template>
+</body>
+</html>
+<script>
+  Vue.component("myContent",{
+    template:'#myCom'
+  });
+  let box = new Vue({
+    el:'#box',
+    data:{},
+    components:{
+      
+    }
+    
+
+  })  
+</script>

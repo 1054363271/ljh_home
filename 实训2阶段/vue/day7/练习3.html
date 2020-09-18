@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <style>
+    li{
+      list-style: none;
+      display: inline;
+    }
+    .show{
+      width: 200px;
+      height: 200px;
+      background-color: #f00;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <ul>
+      <li><router-link to="/home">首页</router-link></li>
+      <li><router-link to="/vip">会员</router-link></li>
+    </ul>
+    <div class="show">
+      <router-view name="/viphot"></router-view>
+    </div>
+    <template id="name">
+      <div>
+        <h1>首页</h1>
+      </div>
+    </template>
+    <template id="vip">
+      <div>
+        <h1> 会员中心</h1>
+        <ul>
+          <li><router-link to="">会员活动1</router-link></li>
+          <li><router-link to="">会员活动2</router-link></li>
+        </ul>
+      </div>
+    </template>
+    <template>
+      <div>
+        <h1>会员活动</h1>
+        <p>活动标题</p>
+        <p>传递过来的内容id:{{$route.params.id}}</p>
+      </div>
+    </template>
+  </div>
+</body>
+</html>
+<script>
+  const Home = Vue.extend({template:'#home'});
+  const Vip = Vue.extend({template:'#vip'});
+  const Viphot = Vue.extend({template:'#viphot'});
+
+  const routes=[
+    {path:'/home',component:Home},
+    {path:'/vip',component:Vip},
+    {path:'/viphot',component:Viphot},
+    {path:'/',redirect: 'home'}
+  ]
+  const router = new VueRouter({
+    routes
+  })
+  
+  var box = new Vue({
+    el:'#box',
+    data:{
+      router
+    }
+  })
+</script>

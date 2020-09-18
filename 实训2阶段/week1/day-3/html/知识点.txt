@@ -1,0 +1,28 @@
+mouseover
+mouseout
+mouseleave   子元素不产生效果
+mouseenter   子元素不产生效果
+
+keyup    键盘松开
+keydown  键盘按下
+keypress 产生字符
+
+resize  窗口大小改变事件
+
+bind   .bind({fn,fn})      绑定事件
+unbind  .unbind({fn,fn})     解除绑定事件
+
+hover 等同于mouseover加上mouseout
+toggle 模拟连续点击事件  toggle(时间)  表示切换显示和影藏时间
+toggleClass()  样式有无的切换
+
+show(time,回调函数)  显示
+hide(time,回调函数)  影藏
+
+fadeIn([speed速度],回调函数)  透明度淡入
+fadeOut([speed速度],回调函数)  透明度淡出
+
+slideDown([time],回调函数)  元素底部向下扩张
+slideUp([time],回调函数)  元素底部向上收缩
+
+stop()  停止

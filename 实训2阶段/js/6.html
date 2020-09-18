@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let names = "qwe, rty,uio,p";
+    let arr = names.split(",");
+    let ulE = document.createElement("ul");
+    let result = '';
+    arr.forEach(i => result += '<li>${i}</li>');
+    ulE.innerHTML = result;
+    console.log(result);
+  </script>
+</body>
+</html>

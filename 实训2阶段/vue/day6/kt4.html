@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <parent></parent>
+  </div>
+  <template id="parCom">
+    <div>
+      <h1>*************{{parmsg}}**************{{chimsg1}}</h1>
+      <childson @change='getVal'></childson>
+    </div>
+  </template>
+  <template id="chiCom">
+    <div>
+      <button @click="btnClick()">点击</button>
+      <h1>*************{{chimsg}}**************</h1>
+    </div>
+  </template>
+</body>
+</html>
+<script>
+  // Vue.component("myCom",{
+
+  // });
+  let box = new Vue({
+    el:'#box',
+    data:{},
+    components:{
+      'parent':{
+        template:'#parCom',
+        data:function(){
+          return{
+            parmsg:'父级组件',
+            chimsg1:''
+          }
+        },
+        methods:{
+					getVal:function(val){
+						console.log(val);
+						this.chimsg1=val;
+					}
+				},
+      components: {
+        'childson':{
+          template:'#chiCom',
+          data:function () {
+            return {
+              chimsg:'子级组件'
+            }
+          },
+          methods:{
+							btnClick:function(){//完成自定义事件
+								this.$emit("change",this.chimsg);
+							}
+						}
+        }
+      }
+      }
+    }
+    
+
+  })  
+</script>

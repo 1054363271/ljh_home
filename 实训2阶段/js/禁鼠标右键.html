@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  我注定无法被点击
+  <script>
+    //禁鼠标右键
+    document.addEventListener('contextmenu',function(e){
+      e.preventDefault();
+    })
+    //禁选择文字
+    document.addEventListener('selectstart',function(e){
+      e.preventDefault();
+    })
+  </script>
+</body>
+</html>

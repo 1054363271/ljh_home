@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+  <script>
+    $(document).ready(function(){
+      $.fn.aaa=function(color){
+      this.css("background-color",color);
+    }
+    $("p").aaa("red");
+    });
+  </script>
+</head>
+<body>
+  <input type="checkbox"> 网络游戏<br/>
+  <input type="checkbox"> 单机游戏
+  <p>213</p>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".12,.2").hide();
+      $("div:first").css("background-color","blue").css({"width":"200px","height":"100px","display":"block"});
+      $("div:last").css("background-color","red").css({"width":"200px","height":"100px","display":"block"});
+      $("div:first").click(function(){
+        $(this).children("p").show();
+      });
+      $("div:last").click(function(){
+        $(this).children("p").show();
+      });
+    })
+  </script>
+</head>
+<body>
+  <div><p class="12">我是一只小老虎</p></div>
+  <div><p class="2">我是一只小企鹅</p></div>
+</body>
+</html>

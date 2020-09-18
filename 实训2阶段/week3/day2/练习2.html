@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="can" width="600" height="600" style="background-color: rgb(0, 255, 128);"></canvas>
+  <script>
+    /** @type {HTMLCanvasElement}*/
+  var can = document.getElementById("can");
+  var cxt = can.getContext("2d");
+
+    function drawTime(){
+      var times = new Date();
+      var s =times.getSeconds();
+      var h =times.getHours();
+      var m = times.getMinutes()
+      //画圆盘
+      cxt.beginPath();
+      cxt.fillStyle="rgba(255,255,255,0)"
+      cxt.arc(300,300,250,0,Math.PI*2);
+      cxt.fill()
+      cxt.restore();
+
+      var img = new Image();
+    img.src = "images/歌单15.jpg"
+    cxt.drawImage(img,50,50,500,500)
+      
+      //画时针刻度
+      for(var i=0;i<60;i++){
+        cxt.save();
+        cxt.lineWidth=3;
+        cxt.strokeStyle="white";
+        cxt.translate(300,300);
+        cxt.rotate(Math.PI/30*i)
+        cxt.beginPath();
+        cxt.moveTo(0,-240);
+        cxt.lineTo(0,-250);
+        cxt.closePath();
+        cxt.stroke();
+        cxt.restore();
+      }
+      for(var i=0;i<12;i++){
+        cxt.save();
+        cxt.lineWidth=5;
+        cxt.translate(300,300);
+        cxt.rotate(Math.PI/6*i)
+        cxt.beginPath();
+        cxt.moveTo(0,-230);
+        cxt.lineTo(0,-250);
+        cxt.closePath();
+        cxt.stroke();
+        cxt.restore();
+      }
+     
+     //时针
+     
+     
+    
+     cxt.save();
+     cxt.lineWidth=7;
+     cxt.strokeStyle="blue";
+     cxt.translate(300,300);
+     cxt.beginPath();
+     cxt.rotate(Math.PI/30*m);
+     cxt.moveTo(0,10);
+     cxt.lineTo(0,-165);
+     cxt.closePath();
+     cxt.stroke();
+     cxt.restore();
+
+     cxt.save();
+     cxt.lineWidth=7;
+     cxt.strokeStyle="yellow";
+     cxt.translate(300,300);
+     cxt.beginPath();
+     cxt.rotate(Math.PI/6*h);
+     cxt.moveTo(0,10);
+     cxt.lineTo(0,-150);
+     cxt.closePath();
+     cxt.stroke();
+     cxt.restore();
+
+     cxt.beginPath();
+     cxt.arc(0,0,7,0,Math.PI*2);
+     cxt.fillStyle="yellow";
+     cxt.fill();
+     cxt.strokeStyle="red";
+     cxt.closePath();
+     cxt.restore();
+
+     cxt.save();
+     cxt.lineWidth=7;
+     cxt.strokeStyle="red";
+     cxt.translate(300,300);
+     cxt.beginPath();
+     cxt.rotate(Math.PI/30*s);
+     cxt.moveTo(0,10);
+     cxt.lineTo(0,-180);
+     cxt.closePath();
+     cxt.stroke();
+     cxt.restore();
+
+      cxt.beginPath();
+      cxt.fillStyle="rgba(255,255,255,0)";
+      cxt.arc(300,300,250,0,Math.PI*2);
+      cxt.fill()
+      cxt.clip()
+      cxt.closePath();
+      cxt.restore();
+
+      // cxt.beginPath();
+      // cxt.font("18px 微软雅黑");
+      // cxt.fillStyle="pink";
+      // var hours = times.getHours();
+      // var str = hours > 9? hours:'0'+hours;
+      // cxt.fillText(str+":"+m+":"+s);
+      // cxt.restore();
+    }
+    drawTime();
+    setInterval(drawTime,1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      font-size: 30px;
+      color: #fff;
+      background-color: #000;
+      text-align: center;
+      line-height: 100px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <script>
+    // function countDown(time){
+    // let nowtime = +new Date();
+    // let settime = +new Date(time);
+    // let times = (settime - nowtime) / 1000;
+    // let d = parseInt(times / 60 / 60 / 24);
+    // d = d < 10 ? '0'+d : d;
+    // let h = parseInt(times / 60 / 60 % 24);
+    // h = h < 10 ? '0'+h : h;
+    // let m = parseInt(times / 60 % 60);
+    // m = m < 10 ? '0'+m : m;
+    // let s = parseInt(times % 60);
+    // s = s < 10 ? '0'+s : s;
+    // return d + ' ' + h + ' ' +  m + ' ' + s ;
+    // }
+    // console.log(countDown('2020-9-24 23:00:00'));
+var hour = document.getElementsByTagName("div")[0];
+var min = document.getElementsByTagName("div")[1];
+var sec = document.getElementsByTagName("div")[2];
+var inputTime = +new Date('2020-9-10 22:00:00');
+countDown1();
+setInterval(countDown1,1000);
+    function countDown1(time){
+      let nowtime = +new Date();
+      let times = (inputTime - nowtime) / 1000;
+      let d = parseInt(times / 60 / 60 / 24);
+      let h = parseInt(times / 60 / 60 % 24);
+      h = h < 10 ? '0'+h : h;
+      hour.innerHTML = h;
+      let m = parseInt(times / 60 % 60);
+      m = m < 10 ? '0'+m : m;
+      min.innerHTML = m;
+      let s = parseInt(times % 60);
+      s = s < 10 ? '0'+s : s;
+      sec.innerHTML = s;
+    }
+    // console.log(setInterval("countDown1('2020-9-24 23:30:00')",1000));
+    console.log(countDown1('2020-9-24 23:30:00'));
+  </script>
+</body>
+</html>

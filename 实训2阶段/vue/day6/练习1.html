@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+
+  </div>
+  <template id="top">
+    <div>
+      <input type="text" :value="">
+    </div>
+  </template>
+</body>
+</html>
+<script>
+  Vue.component("test",{
+    template:'#top',
+    data:function(){
+      return{
+        msg:'早上好',
+        msg2:'同学'
+      }
+    },
+    methods:{
+      btnClick:function(){
+        console.log(1);
+      }
+    }
+  });
+  let box = new Vue({
+    el:'#box',
+    methods:{
+
+    },
+    components: {
+      
+    },
+    data:{
+
+    }
+  })
+</script>

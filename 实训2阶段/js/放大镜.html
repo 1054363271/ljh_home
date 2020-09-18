@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .left{
+      width: 300px;
+      height: 300px;
+      border: 1px solid red;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    .mask{
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 150px;
+      background-color: yellow;
+      opacity: .5;
+      cursor: move;
+    }
+    .big{
+      display: none;
+      position: absolute;
+      left: 310px;
+      top: 10px;
+      width: 300px;
+      height: 300px;
+      border: 1px solid yellow;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <img src="images/产品图4.jpg" alt="" width="300px" height="300px">
+    <div class="mask"></div>
+    <div class="big">
+      <img src="images/产品图4.jpg" id="img" alt="" width="600px" height="600px">
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load',function(){
+      var over = document.querySelector(".left");
+      var mask = document.querySelector('.mask');
+      var big = document.querySelector('.big');
+      var bigimg = document.querySelector('#img');
+    over.addEventListener('mouseover',function(){
+      mask.style.display = 'block';
+      big.style.display = 'block';
+    })
+    over.addEventListener('mouseout',function(){
+      mask.style.display = 'none';
+      big.style.display = 'none';
+    })
+     over.addEventListener('mousemove',function(e){
+      var x = e.pageX - this.offsetLeft;
+      var y = e.pageY - this.offsetTop;
+      console.log(x,y);
+      // mask.style.left = x + 'px';
+      // mask.style.top = y + 'px'
+      var maskx = x-mask.offsetWidth / 2;
+      var masky = y-mask.offsetHeight / 2;
+      if(maskx <= 0 ){
+        maskx = 0;
+      }
+      else if(maskx >= 150){
+        maskx = 150;
+      }
+      if(masky <= 0 ){
+        masky = 0;
+      }
+      else if(masky >= 150){
+        masky = 150;
+      }
+      mask.style.left = maskx +'px';
+      mask.style.top = masky +'px';
+      bigimg.style.marginLeft = -maskx*2+'px';
+      bigimg.style.marginTop = -masky*2+'px';
+     })
+    })
+    
+  </script>
+</body>
+</html>

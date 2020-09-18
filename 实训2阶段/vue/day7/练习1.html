@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <style>
+    li{
+      list-style: none;
+      display: inline;
+    }
+    .fn{
+      width: 200px;
+      height: 200px;
+      background-color: #f00;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <ul>
+      <li><router-link to="/home">首页</router-link></li>
+      <li><router-link to="/vip">会员</router-link></li>
+      <li><router-link to="/hot">活动</router-link></li>
+    </ul>
+    <div class="fn">
+      <router-view></router-view>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  const Home = {template:'<h2>首页内容2</h2>'};
+  const Vip = {template:'<h2>会员内容2</h2>'};
+  const Hot = {template:'<h2>活动内容2</h2>'};
+  const routes = [
+    {path:'/home',component:Home},
+    {path:'/vip',component:Vip},
+    {path:'/hot',component:Hot}
+  ];
+  const router = new VueRouter({
+    routes
+  })
+  var box = new Vue({
+    el:'#box',
+    data:{},
+    router,
+    beforeCreate: function() {
+      this.$router.push('/home')
+    }
+  });
+</script>

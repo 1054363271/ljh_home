@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <test msg1="警察" :a="hello"></test>
+  </div>
+</body>
+</html>
+<script>
+  Vue.component("test",{
+    props: ['msg1','a'],
+    template:'<h1>{{a}}我是一个{{msg1}}</h1>'
+  });
+
+  let box = new Vue({
+    el:'#box',
+    data:{
+      hello:'大家好'
+    },
+    methods:{
+
+    }
+  })
+</script>

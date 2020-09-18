@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <style>
+    .div1{
+      width: 100px;
+      height: 1000px;
+      background-color: #F00;
+    }
+    .div2{
+      width: 1000px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <img v-bind:src="imgsrc" />
+    
+    <div v-bind:class="{div1:isTrue,div2:isTrue2}"></div>
+  </div>
+</body>
+</html>
+<script>
+  //v-bind:src="imgsrc"  绑定一个样式
+  //v-bind:class="{div1:isTrue,div2:isTrue2}"  绑定多个样式  后面会覆盖前面的样式
+  //v-bind:class="obj"  同时绑定多个时间
+  // v-bind:class="[divA,divB]"  将类名按属性的方式进行绑定
+  // v-bind:class="[isA ? divA : '' ,divB]"   可以加入表达式（三目运算符）
+  var box = new Vue({
+    el:'#box',
+    data:{
+      imgsrc:"img/歌单15.jpg",
+      isTrue:false,
+      isTrue2:true
+    },
+    methods: {
+      
+    }
+  })
+</script>

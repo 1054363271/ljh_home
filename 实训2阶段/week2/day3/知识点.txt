@@ -1,0 +1,34 @@
+// col-md-  电脑端
+// col-sm-   平板
+// col-xs-   手机端
+// col-lg-   超大  如液晶电视
+// col-md/sm/xs/-offset-  偏移 会影响后面元素的位置
+// col-md/sm/xs-pull/push- 偏移 不会影响后面元素的位置 （后面的div优先级更高）
+//h1  36px      
+//h2  30px
+//h3  24px
+//h4  18px
+//h5  14px
+//h6  12px 
+//p   14px
+//h1~h3  margin-top=20px                                     margin-bottom = 10px
+//h4~h6
+margin-top=10px                                     margin-bottom = 10px
+//small
+//strong
+//em
+//text-left/right/center/justfy  左对齐、右对齐、居中对齐、两边对齐
+//.list-inline  使列表水平展示  并且左右外边距都为5px
+//.dl-horizontal   使自定义列表的dd和dt水平展示
+//.form-group   对内部元素进行简单地排序
+//.form-control  对该元素设置宽度100%
+//.form-inline  表单内联 对表单的元素设置inline-block样式  
+//.form-horizontal  将表单竖着排列   
+//has-success  成功状态
+//conctrol-lable  跟随变化而变化
+//has-error  错误状态红色
+//has-warning  警告状态
+//btn btn-default默认(灰色)primary重要(深蓝色)success成功(绿色)info日志信息(天蓝色)warning警告(黄色)danger危险(红色)link链接(默认)
+//btn-md/sm/xs 大 / 小 / 超小
+//img-circle/rounded/thumbnail  图片变圆/图片修角/图片加个外边框
+//

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #can{
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <canvas id="can" height="1800px" width="1800px"></canvas>
+    </div>
+    <script>
+        /** @type {HTMLCanvasElement}*/
+        let can = document.getElementById('can');//获取画布元素
+        let cxt = can.getContext('2d')//创建对象
+
+        // cxt.beginPath();//开始路径
+        // cxt.moveTo(100,100);//定义开始坐标   （x,y）  一条水平横线改变x  一条垂直线改变y
+        // cxt.lineTo(300,100);//定义结束坐标
+        // cxt.lineTo(200,200);
+        // cxt.lineTo(100,100);
+        // cxt.fillStyle = 'blue'//填充颜色
+        // cxt.fill();//开始填充
+        // cxt.strokeStyle = 'red'; //英文  RGB  #  要放在开始绘制之前  设置线的颜色
+        // // cxt.lineWidth = '50' //设线的宽度
+        // cxt.closePath();//关闭路径
+        // cxt.stroke();//开始绘制
+       
+
+       //三角形
+        // cxt.beginPath();
+        // cxt.moveTo(600,200);
+        // cxt.lineTo(700,300);
+        // cxt.lineTo(500,300);
+        // cxt.lineTo(600,200);
+        // cxt.fillStyle = 'green'//填充颜色
+        // cxt.fill();//开始填充
+        // cxt.strokeStyle = 'red';
+        // cxt.closePath();
+        // cxt.stroke();
+
+
+        //六边形
+        // cxt.beginPath();
+        // cxt.moveTo(150,350);
+        // cxt.lineTo(200,350);
+        // cxt.lineTo(250,300);
+        // cxt.lineTo(200,250);
+        // cxt.lineTo(50,250);
+        // cxt.lineTo(0,300);
+        // cxt.lineTo(50,350);
+        // cxt.strokeStyle = 'red';
+        // cxt.closePath();
+        // cxt.stroke();
+        
+
+        //上
+        // cxt.beginPath()
+        // cxt.moveTo(100,100);
+        // cxt.lineTo(100,200);
+        // cxt.moveTo(50,200);
+        // cxt.lineTo(200,200);
+        // cxt.moveTo(100,150);
+        // cxt.lineTo(150,150);
+        // cxt.strokeStyle = 'red';
+        // cxt.closePath();
+        // cxt.stroke();
+
+        //矩形
+        // cxt.rect(100,100,300,200);//(x,y,width,height)
+        // cxt.fillStyle = 'green';
+        // cxt.fill();
+        // cxt.strokeStyle = 'red'
+        // cxt.lineWidth = '5'
+        // cxt.stroke()
+
+        // //有框，无填充
+        // cxt.beginPath();
+        // cxt.strokeRect(400,300,100,100);
+        // cxt.closePath()
+
+        // //填充，无边框
+        // cxt.beginPath();
+        // cxt.fillRect(400,500,100,100);
+        // cxt.closePath()
+
+        // //擦拭，清楚矩形
+        // cxt.clearRect(250,150,150,50)
+
+        //圆形
+        //大黑
+        cxt.beginPath()
+        cxt.arc(400,250,200,Math.PI/2,Math.PI/2*3,true);//x，y，半径，开始的角度，结束的角度，旋转角度（true逆时针  falst顺时针）
+        cxt.fillStyle = 'black';
+        cxt.fill();
+        cxt.closePath();
+        //大白
+        cxt.beginPath()
+        cxt.arc(400,250,200,Math.PI/2,Math.PI/2*3,false);//x，y，半径，开始的角度，结束的角度，旋转角度（true逆时针  falst顺时针）
+        cxt.fillStyle = 'red';
+        cxt.fill();
+        cxt.closePath();
+        //小黑
+        cxt.beginPath()
+        cxt.arc(400,350,100,Math.PI/2,Math.PI/2*3,false);//x，y，半径，开始的角度，结束的角度，旋转角度（true逆时针  falst顺时针）
+        cxt.fillStyle = 'black';
+        cxt.fill();
+        cxt.closePath();
+        //小白
+        cxt.beginPath()
+        cxt.arc(400,150,100,Math.PI/2,Math.PI/2*3,true);//x，y，半径，开始的角度，结束的角度，旋转角度（true逆时针  falst顺时针）
+        cxt.fillStyle = 'red';
+        cxt.fill();
+        cxt.closePath();
+        //小小黑
+        cxt.beginPath()
+        cxt.arc(400,150,30,0,Math.PI*2,true);//x，y，半径，开始的角度，结束的角度，旋转角度（true逆时针  falst顺时针）
+        cxt.fillStyle = 'black'
+        cxt.fill();
+        cxt.closePath();
+        //小小白
+        cxt.beginPath()
+        cxt.arc(400,350,30,0,Math.PI*2,true);//x，y，半径，开始的角度，结束的角度，旋转角度（true逆时针  falst顺时针）
+        cxt.fillStyle = 'red'
+        cxt.fill();
+        cxt.closePath();
+        // cxt.beginPath();
+        // cxt.arc(500,150,100,0,Math.PI/2*3,true)
+        // cxt.fillStyle = 'red'
+        // cxt.fill();
+        // cxt.closePath();
+        
+        
+        // cxt.beginPath();
+        // cxt.arc(200,150,100,0,Math.PI/2,true)
+        // cxt.fillStyle = 'red'
+        // cxt.fill();
+        // cxt.closePath();
+
+        // cxt.beginPath();
+        // cxt.arc(200,250,100,0,Math.PI/2,false)
+        // cxt.fillStyle = 'red'
+        // cxt.fill();
+        // cxt.closePath();
+
+        //贝塞尔曲线
+        // cxt.moveTo(100,100)
+        // cxt.quadraticCurveTo(200,200,200,100);
+        // cxt.stroke();
+
+        //变换图形
+        // cxt.fillStyle = 'red'
+        // cxt.fillRect(100,100,400,200);
+        // //平移
+        // cxt.save();
+        // cxt.translate(100,200);
+        // cxt.fillStyle = 'blue'
+        // cxt.fillRect(100,100,400,200);//填充矩形
+        // cxt.restore();
+        // //缩放
+        // cxt.save();
+        // cxt.fillStyle = 'pink'
+        // cxt.scale(0.5,0.7);
+        // cxt.fillRect(100,100,400,200);
+        // cxt.restore();
+        // //旋转
+        // cxt.fillStyle = 'yellow'
+        // cxt.translate(100,100)
+        // cxt.rotate(Math.PI/4);
+        // cxt.fillRect(0,0,400,200);
+    </script>
+</body>
+</html>

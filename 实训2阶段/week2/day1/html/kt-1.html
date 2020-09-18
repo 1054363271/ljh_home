@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+  <script>
+    $(document).ready(function(){
+      var obj1 = {
+        name:0,
+        age:18,
+        hobby:{
+          player:99,worker:30
+        }
+      };
+      var obj2 = {
+        a:20,
+        b:10,
+        c:{
+          d:99,e:30
+        }
+      };
+      //JSON 是一种保存数据格式   数组用中括号[] 对象用大括号{} 其他用键值对 :  xml
+      $.extend(obj1,obj2);  //出现重复  后者覆盖前者
+      var priobj = typeof JSON!="undefined"?JSON.stringify: function(){
+        var array = [];
+        $.each(obj, function(key , val){
+          var text = key + ":";
+          text+=$.isPlainObject(val)?priobj(val):val;
+          array.push(text);
+        })
+        return "{" + array.join(",")+ "}";
+      }
+      $("#pri").append(priobj(obj1));
+    });
+  </script>
+</head>
+<body>
+  <p id="pri"></p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <style>
+    .mydiv{
+      width: 100px;
+      height: 100px;
+      background-color: #F00;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <!-- <h1 v-if="isShow">我是一个男孩儿</h1>
+    <h1 v-show="isShow2">我是一个跑酷女孩儿</h1> -->
+    <!-- <h1 v-else>我啥也不是</h1> -->
+    <button @click="fn">切换</button>
+    <div class="mydiv" v-show="isDivShow">我是内容</div>
+    账号：<input type="text" v-model="text">
+    <h1>内容：{{text}}</h1>
+  </div>
+</body>
+</html>
+<script>
+  //v-if 条件渲染指令 true显示false不显示  有v-else就执行v-else（不适用于频繁切换）
+  //v-else 是 v-if 的后续
+  //v-show false  元素不消失只影藏  v-if会消失（适用于频繁切换显示效果场景）
+  //v-on  可以被 @ 替换
+  //v-on 会遇到冒泡问题  解决方案1：在子事件添加.stop修饰符  解决方案2：在父事件上添加.self修饰符
+  var box = new Vue({
+    el:'#box',
+    data:{
+      isShow:false,
+      isShow2:false,
+      isDivShow:false
+      
+    },
+    methods: {
+      fn:function() {
+        this.isDivShow = !this.isDivShow
+      }
+
+    }
+  })
+</script>

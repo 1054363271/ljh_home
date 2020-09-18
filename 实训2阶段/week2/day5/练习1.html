@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="js/jquery-1.12.4.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <style>
+    .wz{
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="#mymodal" class="btn btn-success" data-toggle="modal">登录</a>
+    <div class="modal fade bs-example-modal-sm" id="mymodal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" data-dismiss="modal">x</button>
+            <h2>登录百度账号</h2>
+          </div>
+          <div class="modal-body input-group">
+            <input type="text" placeholder="手机/邮箱/用户名" class="form-control wz">
+            <input type="text" placeholder="密码 "class="form-control wz">
+            <input type="checkbox" style="margin: 20px 0;">下次自动登录
+            <button class="btn btn-primary " data-dismiss="modal" style="width: 100%;">登录</button>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</body>
+</html>

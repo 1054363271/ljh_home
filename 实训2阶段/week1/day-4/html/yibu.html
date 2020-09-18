@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+  <script>
+    // src 属性不受同源策略的影响
+    function show(s){
+        $("p").append(s);
+      }
+    $(document).ready(function(){
+      
+      var nameval = $("#name").val;
+      
+      $("input").click(function(){
+        var script = document.createElement("script");
+        script.src = "my.txt";
+        document.getElementsByTagName("p")[0].appendChild(script);
+        // $.ajax({
+          //解决跨域的方法一  服务器更改header属性
+          //方法二：src属性不受同源策略的影响
+          // url:"http://192.168.74.140:8080/ADemo/AServlet",
+          // type:"GET",
+          // data:"name="+nameval,
+          // dataType:"text",
+          //如果请求前可以确定返回的是dataType：html
+          //可以使用$(selector).load(url,data,success);
+          //$("p").load("my.text","name="+nameval);
+          // success: function(my){
+          //   $("p").append(my);
+          // }
+        // });
+      });
+    });
+  </script>
+</head>
+<body>
+  <input type="text" id="name"/>
+  <input type="button" value="获取"/>
+  <p>小偷别跑</p>
+</body>
+</html>

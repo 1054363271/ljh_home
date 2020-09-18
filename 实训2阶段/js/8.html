@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      background-color:blue;
+      text-align: center;
+      font-size: 50px;
+      line-height: 100px;
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+  <div onclick="onclikdiv()">5</div>
+  <button>同意</button>
+
+  <script>
+    
+   function onclikdiv(){
+     let a = document.getElementsByTagName("div")[0].innerText;
+     console.log(typeof(a));
+     console.log(a);
+    };
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
+</head>
+<body>
+  <div id="box">
+    <h1>{{msg}}</h1>
+    <button @click="getReq">请求</button>
+  </div>
+</body>
+</html>
+<script>
+  let box = new Vue({
+    el:'#box',
+    data:{
+      msg:'大家好！'
+    },
+    methods:{
+      getReq:function(){//点击按钮，发送请求
+        axios.get("req.txt").then(
+          res=>{
+            this.msg=res.data;//响应回来的结果
+          }
+        ).catch(
+          err=>{
+            console.log(err);
+          }
+        );
+      }
+    }
+  })
+</script>

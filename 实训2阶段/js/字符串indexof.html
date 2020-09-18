@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let str = ['red','pink','blue','red','red'];
+    let index = str.indexOf('red');
+    let num = 0;
+    while(index !== -1){
+      console.log(index);
+      num++;
+      index = str.indexOf('red', index + 1);
+    }
+    console.log('出现了：'+num + '次');
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>QQ简易聊天框</title>
+    <link rel="stylesheet" href="../css/chat.css">
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script>
+      $(document).ready(function(){
+         var name = ["唐舞麟", "小舞", "唐三"];
+            var str={};
+            $("#send").click(function () {
+                qqGo();
+            })
+            $(document).keydown(function (even) {
+                if (even.keyCode == 13) {
+                    qqGo();
+                }
+            })
+            function qqGo() {
+                if ($(".chatText").val() != "") {
+                    //设置随机数
+                    var num = Math.floor(Math.random() *3) + 1;
+                    //设置聊天内容
+                    
+                    //随机图片
+                    var headStar = "<div class='t1'><img src=../images/head0"+ num+".jpg></div>";
+                    //随机名字
+                    var userName = "<div class='t2'>" + name[num - 1] + "</div>";
+                    //文本内容
+                    var chatAtr = "<div>" + $(".chatText").val() + "</div>";
+                    
+                    var currentStr = "<section>" + headStar + userName + chatAtr + "</section>";
+
+                    str+=currentStr; //
+                     //获取到的聊天的内容加入到chatBody的div上去
+                    $(".chatBody").html(str);
+                    //输入框内容清空
+                    $(".chatText").val("");
+                    $(".t1").css("display","inline-block");
+                    $(".t2").css("display","inline-block");
+                    
+                }else{
+                    alert("请输入内容") 
+                }
+            }
+        });
+      // var icons = new Array("head01.jpg","head02.jpg","head03.jpg","head04.jpg");
+      // var names = new Array("小张","小万","小潘");
+      // $("#send").click(function(){
+        // var $text = $("chatText");
+          // var iconsnum = Math.floor(Math.random()*4);
+          // var imgs = '<img src="../images/head01.jpg"';
+         
+          // var namesnum = Math.floor(Math.random()*3);
+          // $("#tp").html("imgs");
+          // $("h6").text("names[namesnum]");
+        // $(".chatText").val().appendTo("#sr")
+      //   $("#sr").append($(".chatText"));
+      //     $(".chatBody").append($("#tab"));
+      // });
+      // });
+    </script>
+    <style>
+      .puts{
+        font-size: 20px;
+        background-color: #ccc;
+        text-align: center;
+        width: 100%;
+        height: 20px;
+      }
+    </style>
+</head>
+<body>
+  <!-- <section>
+    <table id="tab">
+      <tr>
+        <td rowspan="2" id="tp"><img src="../images/head01.jpg" alt=""></td>
+        <td><h6>546231</h6></td>
+      </tr>
+      <tr>
+        <td><span id="sr"></span></td>
+      </tr>
+    </table>
+  </section> -->
+<section id="chat">
+    <div class="chatBody">
+      <div class="tp">
+      </div>
+    </div>
+    <div><img src=../images/icon.jpg></div>
+    <textarea class="chatText"></textarea>
+    <div class="btn"><span>关闭(C)</span><span id="send">发送(S)</span></div>
+    
+</section>
+</body>
+</html>

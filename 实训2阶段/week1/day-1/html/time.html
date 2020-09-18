@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="mytime"></div>
+  <input type="button" value="暂停" onclick="setInterval(times)">
+  <input type="button" value="继续" onclick="con()">
+  <script type="text/javascript">
+      // function con(){
+      //   setInterval("getTime()", 1000);
+      // }
+      // function stop(){
+      //   setInterval("getTime()", 10000);
+      // }
+      function getTime(){
+      let mytime = new Date();
+      let h = mytime.getHours();
+      let m = mytime.getMinutes();
+      let s = mytime.getSeconds();
+      document.getElementById("mytime").innerHTML=("系统时间：" + h + ": " + m + ": " + s);  
+    }
+    
+    function con(){
+      let times =  setInterval("getTime()", 1000);
+    }
+    con();
+   
+  </script>
+</body>
+</html>

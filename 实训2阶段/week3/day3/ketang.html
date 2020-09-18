@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="can" width="800" height="600" style="border: 1px solid red;"></canvas>
+</body>
+<script>
+   /** @type {HTMLCanvasElement}*/
+  var can = document.getElementById("can");
+  var cxt = can.getContext("2d");
+
+//绘制阴影
+// cxt.shadowOffsetX=10;
+// cxt.shadowOffsetY=10;
+// cxt.shadowColor="#ccc";
+// cxt.shadowBlur=5;
+
+// //  //准备渐变色
+  var lg = cxt.createLinearGradient(10,0,200,0)
+  lg.addColorStop(0,"red");
+  lg.addColorStop(0.5,"green");
+  lg.addColorStop(1,"blue");
+
+//   cxt.beginPath();
+//   cxt.moveTo(10,160);
+//   cxt.lineTo(200,30);
+//   cxt.lineWidth=5;
+//   cxt.strokeStyle=lg;
+//   cxt.stroke();
+//   cxt.closePath();
+
+
+
+//   //矩形渐变色
+
+//   cxt.beginPath();
+//   cxt.fillStyle=lg;
+//   cxt.fillRect(10,200,200,100)
+//   cxt.closePath();
+
+  // var rg = cxt.createRadialGradient(310,450,10,310,450,100);
+  // rg.addColorStop(0,"pink");
+  // rg.addColorStop(0.5,"green");
+  // rg.addColorStop(1,"red");
+
+  // cxt.save()
+  // cxt.beginPath();
+  // cxt.fillStyle=rg;
+  // cxt.arc(310,450,100,0,Math.PI*2,true);
+  // cxt.fill();
+  // cxt.closePath();
+  // cxt.save()
+  // cxt.beginPath();
+  // cxt.fillStyle="blue";
+  // cxt.fillRect(10,10,100,100);
+  // cxt.closePath();
+  // cxt.restore();
+
+  // cxt.globalCompositeOperation="lighter"
+
+  // cxt.save()
+  // cxt.beginPath();
+  // cxt.fillStyle="red";
+  // cxt.arc(110,10,50,0,Math.PI*2);
+  // cxt.fill();
+  // cxt.closePath();
+  // cxt.restore();
+
+  // cxr.save();
+  // cxt.beginPath();
+  // cxt.fillStyle="red";
+  // cxt.arc(110,110,60,0,Math.PI*2);
+  // cxt.fill();
+  // cxt.closePath();
+  // cxt.restore();
+  var img = new Image();
+  img.src= "images/歌单15.jpg";
+  img.onload = function(){
+    cxt.drawImage(img,100,100,150,150);
+    cxt.drawImage(img,100,100,150,150,10,10,100,100);
+  }
+</script>
+</html>

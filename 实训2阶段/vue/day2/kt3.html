@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <ul>
+      <!--1,遍历对象 value：对象的属性值  key:对象的属性名  index:属性的索引-->
+      <!-- <li v-for="(value,key,index) in animal">
+        {{index}}------{{key}}--------{{value}}
+      </li> -->
+      <!-- 2.遍历数组 item:当前对象  index:对象的索引值 -->
+      <li v-for="(item,index) in animal">
+        {{index}}--------{{item.name}}=========={{item.type}}++++++++++{{item.age}}
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
+<script>
+  var box = new Vue({
+    el:'#box',
+    data:{
+      animal:[
+      {
+        name:"大白",
+        age:3,
+        type:"dog"
+      },
+      {
+        name:"大黄",
+        age:4,
+        type:"cat"
+      }
+      ]
+     
+    },
+    methods:{
+
+    }
+  })
+</script>

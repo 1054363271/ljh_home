@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+  <script>
+    //addClass 添加样式
+    //removeClass 移除样式
+    //toggleClass 实现add和remove样式切换
+    //hasClass 判断指定样式是否存在 true false
+    //html() 将元素内容设置为指定新元素 原内容被覆盖
+    //text() 设置文本内容
+    //focus() 获取焦点
+    //blur() 失去焦点
+    //val() 指的是value值
+    //append  $(a).append(b) 将b放在a内部末尾位置
+    //appendTo $(a).append(b) 将a放在b内部末尾位置
+    //prepend $(a).append(b) 将b放在a内部开头位置
+    //prependTo $(a).appendTo(b) 将a放在b内部开头位置
+    //after $(a).after(b) 将b放在a下面，属于同级
+    //insertafter $(a).instertafter(b) 将a放在b下面，属于同级
+    //before $(a).before(b) 将b放在a上面，属于同级
+    //insertbefore $(a).instertbefore(b) 将a放在b上面，属于同级
+    //remove()  清除节点和内容 empty() 清除内容，但保留节点 detach() 删除节点，保留元素的绑定事件
+    //replaceWith() $(a).replaceWith(b) b替换a
+    //replaceAll() $(a).replaceAll(b) a替换b
+    //clone(true) 复制节点t同时复制事件
+    //clone(false) 只复制节点 不复制事件
+    //Attr("d") 获取节点
+    //Attr({"":"","":""}) 设置属性
+    //removeAttr("a") 删除节点 
+    //children() 子元素
+    //next() 同辈下一个元素
+    //prev() 同辈上一个元素
+    //siblings() 同一级兄弟元素
+    //each() 遍历每一个
+    //end() 用于连接两个操作 并且后面可以覆盖前面的操作
+    //height([]) width([])  设置宽高
+    //offset()
+    //offsetParent
+    $(document).ready(function(){
+      $("h1").mouseover(function(){
+        $("p").addClass("pig");
+      });
+      $("h1").mouseout(function(){
+        $("p").removeClass("pig");
+      });
+      $("h1").click(function(){
+        if($("p").hasClass("pig")){
+          $("p").css("font-size","30px");
+        }
+      });
+      $("div").click(function(){
+        $("div").html("<p>你好丑</p>");
+      })
+      $("p:eq(0)").click(function(){
+      $(this).clone(true).appendTo("div");
+    })
+    });
+
+  </script>
+  <style>
+    .pig{
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>你是猪</h1>
+    <p>你是小鸡</p><br/>
+    <p>你是小猫</p><br/>
+    <p>你是小狗</p><br/>
+  </div>
+  <input type="search" >
+</body>
+</html>

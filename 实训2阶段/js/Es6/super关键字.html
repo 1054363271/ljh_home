@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Father{
+      say(){
+        return '我是爸爸';
+      }
+    }
+    class Son extends Father{
+      say(){
+        console.log(super.say()+'的儿子');//super.say()就是调用父类中的普通函数say(),而且super()必须在子类参数声明之前调用
+      }
+    }
+    let son = new Son()
+    son.say();
+    // constructor 里面的this指向实例对象，方法里面的this指向这个方法的调用者
+  </script>
+</body>
+</html>

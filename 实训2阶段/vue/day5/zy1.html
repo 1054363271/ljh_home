@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
+  <style>
+    li{
+      width: 1300px;
+      height: 60px;
+      margin: 10px 0;
+      border-bottom: 1px solid #000;
+      list-style: none;
+    }
+    img{
+      float: left;
+      width: 50px;
+      height: 50px;
+      margin-right: 20px;
+    }
+   
+    .qr{
+      width: 100px;
+      font-size: 20px;
+      line-height: 50px;
+      display: inline-block;
+      /* float: right; */
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .center{
+      width: 800px;
+      height: 50px;
+      font-size: 30px;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .rq{
+      width: 220px;
+      font-size: 20px;
+      line-height: 50px;
+      display: inline-block;
+      float: right;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      /* float: right; */
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <ul>
+      <li v-for="item in newlists">
+        <img :src="item.author.avatar_url?getImage(item.author.avatar_url):item.author.avatar_url" alt="">
+        <span class="qr">{{item.reply_count}}/{{item.visit_count}}</span>
+        <span class="center">{{item.title}}</span>
+        <span class="rq">{{item.create_at}}</span>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
+<script>
+  let box = new Vue({
+    el:'#box',
+    data:{
+      newlists:[]
+    },
+    mounted:function() {
+      axios.get("https://cnodejs.org/api/v1/topics").then(
+        res=>{
+          console.log(res.data.data);
+          this.newlists=res.data.data
+        }
+      )
+    },
+  
+    methods:{
+      getImage(url){
+	console.log(url);
+	if(url !== undefined){
+		return url.replace(/^(http)[s]*(\:\/\/)/,'https://images.weserv.nl/?url=');
+	}
+}
+    }
+  })
+</script>

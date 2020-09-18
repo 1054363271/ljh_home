@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+</head>
+<body>
+  <div id="box">
+    <button @click='homeFn'>首页</button>
+    <button @click='listFn'>列表</button>
+    <router-link to=""></router-link>
+  </div>
+</body>
+</html>
+<script>
+  const Home = {template:'<div>首页内容</div>'}
+  const List = {template:'<div>列表内容</div>'}
+
+  const routes=[
+    {path:'/home',name:'home',component:Home},
+    {path:'/list',name:'list',component:List}
+  ]
+
+  const router = new VueRouter({
+    routes
+  })
+
+  router.push('/home')
+  var box = new Vue({
+    el:'#box',
+    data:{
+
+    },
+    router,
+    methods: {
+      homeFn:function(){
+        this.$router.push({path:'home'});
+      },
+      listFn:function(){
+        this.$router.push('list');
+      }
+    }
+  })
+</script>

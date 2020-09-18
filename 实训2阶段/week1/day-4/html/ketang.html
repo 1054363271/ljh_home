@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+  <script>
+  //1,创建XMLHttpRequest对象
+  var oAjax;
+  if(window.XMLHttpRequest){
+    oAjax = new XMLHttpRequest();
+  }else{
+    oAjax = new ActiveXObject("Microsoft.XMLTT");
+  }
+  //2，连接服务器
+  oAjax.open("GET","my.txt",true);
+  //3,发送请求
+  oAjax.send();
+  //4,接受返回值
+  oAjax.onreadystatechange=function(){
+    if(oAjax.readyState==4 && oAjax.status==200){
+      alert("成功"+oAjax.responseText);
+    }else{
+      alert("失败");
+    }
+  };
+  $(document).ready(function(){
+    $("input").click(function(){
+      $.ajax({
+      url:"my.txt",
+      type:"post",
+      name:"name=zhangsan",
+      async:true,  //true 异步请求  false  同步请求
+      success:function(res){
+        $("p").text(res);
+        // alert(e);
+      }});
+    });
+    //如果在请求前确定使用get方式请求，可以使用简写方式$.get(url,data,success);
+    //如果在请求前确定使用post方式请求，可以使用
+  });
+  </script>
+</head>
+<body>
+  <input type="submit" value="提交">
+  <p></p>
+</body>
+</html>

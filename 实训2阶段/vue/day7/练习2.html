@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <style>
+    li{
+      list-style: none;
+      display: inline;
+    }
+    .show{
+      width: 200px;
+      height: 200px;
+      background-color: #f00;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <ul>
+      <li><router-link to="/home">首页</router-link></li>
+      <li><router-link to="/vip">会员</router-link></li>
+      <li><router-link to="/hot">活动</router-link></li>
+    </ul>
+    <div class="show">
+      <router-view></router-view>
+    </div>
+  </div>
+  <template id="home">
+    <div>
+      <h2>我是首页内容</h2>
+      <ul>
+        <li>推荐</li>
+        <li>热门</li>
+        <li>招聘</li>
+      </ul>
+    </div>
+  </template>
+  <template id="vip">
+    <div>
+      <h2>我是会员内容</h2>
+      <router-link to="/vip/open">开通</router-link>
+      <router-link to="/vip/open2">充值</router-link>
+      <router-view></router-view>
+    </div>
+  </template>
+</body>
+</html>
+<script>
+  //1、定义路由组件
+  const Home = {template:'#home'};
+  const Vip = {template:'#vip'};
+  const Hot = {template:'<h2>热门内容2</h2>'};
+  //2、定义路由组件的配置
+  const routes = [
+    {path:'/home',component:Home},
+    {path:'/vip',component:Vip,
+      children:[
+        {path:'open',component:{template:'<h1>我是会员内容中的开通</h1>'}},
+        {path:'open2',component:{template:'<h1>我是会员内容中的续费</h1>'}},
+        {path:'/',redirect:'open'}
+      ]
+    },
+    {path:'/hot',component:Hot},
+  ]
+  //3、把定义好的路由配置，创建一个实例对象
+  const router = new VueRouter({
+    routes
+  })
+  //4、把路由器对象跟Vue对象进行挂载
+  var box = new Vue({
+    el:'#box',
+    data:{},
+    router,
+    beforeCreate: function() {
+      this.$router.push('/home')
+    }
+  });
+</script>

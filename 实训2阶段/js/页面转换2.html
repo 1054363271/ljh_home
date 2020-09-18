@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="页面转换1.html">
+    <input type="submit" value="返回">
+  </form>
+  <div></div>
+  <script>
+    console.log(location.search);
+    //先去掉？
+    var params = location.search.substr(1)
+    //分割字符
+    var arr = params.split('=');
+    //取出后面数字
+    var div = document.querySelector('div');
+    div.innerHTML = '密码：'+arr[1];
+  </script>
+</body>
+</html>

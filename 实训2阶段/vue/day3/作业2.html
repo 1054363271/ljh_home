@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <style>
+    #box{
+      width: 300px;
+      background-color: #ccc;
+
+    }
+   
+    ul{
+      padding-left: 0px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <h1>任务列表</h1>
+    <p>任务总数：{{arr.length}}; 还有: 0 未完成: 【 <span>完成</span> 】</p>
+    <ul>
+      <li v-if="(item,index) in arr">
+        <input type="checkbox" v-model="item.bol"/>
+        <span>{{item.title}}</span>
+      </li>
+    </ul>
+    <input type="text"><button>添加</button>
+  </div>
+</body>
+</html>
+<script>
+  let box = new Vue({
+    el:'#box',
+    data:{
+      arr:[
+        {title:'设计',bol:false,edit:false},
+        {title:'前端',bol:false,edit:false},
+        {title:'后端',bol:false,edit:false},
+        {title:'数据库',bol:false,edit:false}
+      ]
+    },
+    methods:{
+
+    }
+  });
+</script>

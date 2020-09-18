@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
+</head>
+<body>
+  <div id="box">
+    <my-nav txt="首页" img1="img/1.jpg" img2="img/1.jpg"></my-nav>
+  </div>
+  <template id="navs">
+    <div>
+      <span>{{txt}}</span>
+      <img :src="img1">
+      <img :src="img2">
+    </div>
+  </template>
+</body>
+</html>
+<script>
+  let box = new Vue({
+    el:'#box',
+    data:{
+
+    },
+    components:{
+      'myNav':{
+        template:'#navs',
+        props: ['txt','img1','img2']
+      }
+    },
+    methods:{
+
+    }
+  })
+</script>

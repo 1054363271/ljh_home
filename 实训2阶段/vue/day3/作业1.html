@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <style>
+    .af{
+      margin: auto;
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <fieldset class="af">
+      <legend>学生信息录入系统</legend>
+      姓名: <input type="text"><br><br>
+      年龄: <input type="text"><br><br>
+      性别: <select>
+              <option value="男">男</option><option value="女">女</option>
+            </select><br><br>
+      手机: <input type="text"><br><br>
+      <button>创建新用户</button>
+    </fieldset>
+    <table class="af">
+      <thead>
+        <tr>
+          <td>姓名</td>
+          <td>年龄</td>
+          <td>性别</td>
+          <td>手机</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item,index) in students">
+          <td>{{item.name}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.age}}</td>
+          <td>{{item.phone}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+<script>
+  let box = new Vue({
+    el:'#box',
+    data:{
+      students:[
+        {name:'方君昊',sex:'男',age:'20',phone:'15473124380'},
+        {name:'乔向雁',sex:'女',age:'22',phone:'15373124380'},
+        {name:'鲁傲柔',sex:'男',age:'23',phone:'15273124380'},
+        {name:'寸琴韵',sex:'女',age:'21',phone:'15173124380'},
+      ]
+    },
+    methods:{
+      createStu:function(){
+        var namePatt=/^[a-zA-Z0-9]{4,16}$/;
+        var agePatt=/^([1-9]|[0-9]{2}|100)$/;
+      }
+    }
+  })
+</script>

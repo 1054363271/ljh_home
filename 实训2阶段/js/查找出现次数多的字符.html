@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let str = 'isdihsdifksdiohfksndfifkndkjffdkfks';
+    let o = {};
+    for (let i = 0 ;i < str.length ; i++){
+      let chars = str.charAt(i);
+      if(o[chars]){
+        o[chars]++;
+      }
+      else{
+        o[chars] = 1;
+      }
+    }
+    let ch = '';
+    let max = 0;
+    for (let k in o){
+      if(o[k] > max){
+        max = o[k];
+        ch = k;
+      }
+    }
+    console.log(o);
+    console.log('出现最多的字符是' + ch);
+    console.log('出现次数最多的' + max + '次');
+  </script>
+</body>
+</html>

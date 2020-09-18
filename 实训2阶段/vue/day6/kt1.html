@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
+</head>
+<body>
+  <div id="box">
+    <test></test>
+  </div>
+  <div>---------------------------------------------------------------------------------------</div><br><br>
+  <div id="box2">
+    <pdd></pdd>
+  </div>
+   <template id="com1"><div><h1>我来请安了</h1><img src="img/1.jpg" alt="" width="100px" height="100px">
+    <button @click="btnClick()">点击</button>
+    <p>{{msg+'---'+msg2}}</p>
+  </div>
+  </template>
+</body>
+</html>
+<script>
+  //全局组件
+  //template 默认隐藏
+  Vue.component("test",{
+    template:'#com1',
+    data:function(){
+      return{
+        msg:'早上好',
+        msg2:'同学'
+      }
+    },
+    methods:{
+      btnClick:function(){
+        console.log(1);
+      }
+    }
+  });
+  Vue.component("pdd",{
+    template:'<h1><test></test>大家<span>{{msg}}</span></h1>',
+    data:function(){
+      return{
+        msg:'晚上好',
+        a:'我来啦'
+      }
+    }
+  });
+
+  let box = new Vue({
+    el:'#box',
+    data:{},
+    methods:{}
+  })
+  let box2 = new Vue({
+    el:'#box2',
+    data:{},
+    methods:{}
+  })
+</script>

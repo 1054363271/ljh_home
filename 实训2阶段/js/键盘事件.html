@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //e.keyCode 指的是按下的ASCII码值
+    document.addEventListener('keyup',function(e){
+      console.log("我松开了");
+      console.log(e.keyCode);
+    });
+    document.addEventListener('keydown',function(){
+      console.log("我按下了");
+      //能识别功能键  不区分大小写
+    });
+    document.addEventListener('keypress',function(){
+      console.log("我压住了");
+      //不能识别功能键 区分大小写  比如Ctrl Alt等
+    });
+    //
+  </script>
+</body>
+</html>
