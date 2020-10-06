@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 1000px;
+      height: 700px;
+      background-color: #0f0;
+    }
+   
+    li{
+      list-style: none;
+      display: inline-block;
+      margin: 0px 3px;
+      background-color: #f00;
+      width: 90px;
+      height: 700px;
+
+    }
+    .Lbox{
+     /* float: bottom; */
+     /* background-color: #fff; */
+     background-color: #00f;
+      width: 90px;
+      height: 700px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <ul>
+      <li><div class="Lbox"></div></li>
+      <li><div class="Lbox"></div></li>
+      <li><div class="Lbox"></div></li>
+      <li><div class="Lbox"></div></li>
+      <li><div class="Lbox"></div></li>
+      <li><div class="Lbox"></div></li>
+      <li><div class="Lbox"></div></li>
+      <li><div class="Lbox"></div></li>
+      <li><div class="Lbox"></div></li>
+    </ul>
+  </div>
+</body>
+<script>
+  var lis = document.getElementsByClassName('Lbox'); 
+  console.log(lis.length);
+  for(var i=0 ; i< lis.length ; i++){
+  setInterval(function(){
+    
+      var num = Math.floor(Math.random()*100); 
+      lis[i].style.height = num*7+'px';
+  },1000)
+}
+console.log(lis[i]);
+
+</script>
+</html>

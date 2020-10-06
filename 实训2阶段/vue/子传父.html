@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="day5/js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <chi @itemclick="chiclick">
+
+    </chi>
+  </div>
+  <template id="fcz">
+    <div>
+      <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+  </template>
+</body>
+<script>
+  const chi = {
+    template:'#fcz',
+    data () {
+      return {
+         categories:[
+           {id:'aaa',name:'热门推荐'},
+           {id:'bbb',name:'手机数码'},
+           {id:'ccc',name:'家用电器'},
+           {id:'ddd',name:'电脑办公'},
+         ]
+      }
+    },
+    methods:{
+      btnClick(item){
+        this.$emit('itemclick',item)
+      }
+    }
+
+  }
+  let box = new Vue({
+    el:'#box',
+    data:{
+
+    },
+    methods:{
+      chiclick(item){
+        console.log('chiclick',item);
+      }
+    },
+    components:{
+      chi
+    }
+
+  })
+</script>
+</html>

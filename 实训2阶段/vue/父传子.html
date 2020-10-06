@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="day5/js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <cpn :friends="name">
+
+    </cpn>
+  </div>
+  <template id="tem">
+    <ul>
+      <li v-for="item in friends">{{item}}</li>
+    </ul>
+  </template>
+</body>
+<script>
+  const cpn = {
+    template:'#tem',
+    data () {
+      return {
+        
+      }
+    },
+    props: ["friends"]
+  }
+  let box = new Vue({
+    el:'#box',
+    data:{
+      name:['潘星','鱼子康','陈聪儿','余鹏鹏']
+    },
+    methods:{
+
+    },
+    components:{
+      cpn
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //Object.keys()用于获取对象自身的属性  类似于for...in   返回一个有属性名组成的数组
+    var obj = {
+      id : 1,
+      pname : '小米',
+      price : 3999,
+      num : 200
+    };
+    var arr = Object.keys(obj);
+    console.log(arr);
+
+    //Object.defineProperty(obj,prop,descriptor) 定义新属性或修改原有的属性
+    //obj:必需 目标对象 
+    //prop:必需 需定义或修改的属性的名字
+    //descriptor:必需 目标属性所拥有的特性
+    var obj2 = {
+      id : 1,
+      pname : '小米',
+      price : 3999
+    };
+    //设置属性
+    Object.defineProperty(obj2,'num',{
+      value:1000
+    })
+    console.log(obj2);
+    //修改属性
+    Object.defineProperty(obj2,'id',{
+      value:2
+    })
+    console.log(obj2);
+
+    //writable 不允许重写和修改
+    Object.defineProperty(obj2,'price',{
+      writable:false
+      //true 表示可以修改
+    })
+    obj2.price = 9.9;
+    console.log(obj2);
+
+    //enumerable 无法遍历枚举属性
+    Object.defineProperty(obj2,'age',{
+      value:20,
+      enumerable:false
+      //num设置时enumerable默认为false
+    })
+    console.log(obj2);
+    console.log(Object.keys(obj2));
+
+    //configurable  无法被删除 默认为true可以被删除 设置一次无法多次修改特性
+    Object.defineProperty(obj2,'age',{
+      value:20,
+      enumerable:false,
+      //num设置时enumerable默认为false
+      configurable:false
+    })
+    console.log(obj2);
+    console.log(Object.keys(obj2));
+    delete obj2.num;
+    console.log(obj2);
+
+  </script>
+</body>
+</html>

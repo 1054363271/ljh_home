@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue-router.js"></script>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <h1>{{fullName}}</h1>
+  </div>
+</body>
+</html>
+<script>
+  var box = new Vue({
+    el:'#box',
+    data:{
+      firstName:'Kobe',
+      lastName:'Bryant'
+    },
+    computed:{
+      fullName:{
+        set:function(newValue){
+          console.log('.........',newValue);
+        },
+        get:function(){
+          return this.firstName + ' ' +this.lastName
+        }
+      }
+    }
+  })
+</script>

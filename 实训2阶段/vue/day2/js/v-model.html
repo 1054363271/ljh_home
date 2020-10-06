@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="vue.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="box">
+    <input type="text" v-model="message">{{message}}
+  <div>{{message}}</div>
+  </div>
+</body>
+<script>
+  注册组件
+  Vue.components(
+    'cpn1',
+    {
+      template:`
+      <div>
+        
+        </div>
+      `
+    }
+  )
+  let box = new Vue({
+    el:'#box',
+    data:{
+      message:'你好啊'
+    },
+    components: {
+      "cpn2":{
+        template:`
+        <div>
+            
+        </div>
+        `
+      }
+    }
+  })
+</script>
+</html>

@@ -26,7 +26,7 @@
   <div id="box">
     <fieldset>
       <legend>用户注册</legend>
-      用户名: <input type="text" class="inputS" v-model="message"><br>
+      用户名: <input type="text" class="inputS" v-model="puts">{{puts}}<br>
       密码框: <input type="text" class="inputS"><br>
       性别: <input type="checkbox">男<input type="checkbox">女<br><br>
       爱好（多选按钮）: <input type="checkbox">吃<input type="checkbox">玩<input type="checkbox">睡觉<input type="checkbox">唱歌<br><br>
@@ -35,20 +35,20 @@
     </fieldset>
     <div class="btm">
       填写表单内容如下：<br><br>
-      用户名:{{message}}
+      用户名:{{puts}}
     </div>
   </div>
-</body>
-</html>
 <script type="text/javascript" src="js/vue.js"></script>
 <script>
   var box = new Vue({
     el:'#box',
     data:{
-      message:''
+      puts:'123'
     },
     methods:{
 
     }
   });
 </script>
+</body>
+</html>

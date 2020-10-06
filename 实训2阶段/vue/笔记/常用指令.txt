@@ -2,3 +2,4 @@
 2、v-cloak 在未执行vue代码时  不显示
 3、v-bind 动态绑定 v-bind:属性="属性值"  属性值在data中定义  简写为 :属性="属性值"
    动态绑定class属性: <div :class="{'active':isActive,'line':isLine}"></div>  isActive和isLine在data中定义true或者false
+4、 

@@ -8,7 +8,7 @@
     <script>
       $(document).ready(function(){
          var name = ["唐舞麟", "小舞", "唐三"];
-            var str={};
+            var str=[];
             $("#send").click(function () {
                 qqGo();
             })
@@ -26,9 +26,9 @@
                     //随机图片
                     var headStar = "<div class='t1'><img src=../images/head0"+ num+".jpg></div>";
                     //随机名字
-                    var userName = "<div class='t2'>" + name[num - 1] + "</div>";
+                    var userName = "<span class='t2'>" + name[num - 1] + "</span>";
                     //文本内容
-                    var chatAtr = "<div>" + $(".chatText").val() + "</div>";
+                    var chatAtr = "<div class='t3'>" + $(".chatText").val() + "</div>";
                     
                     var currentStr = "<section>" + headStar + userName + chatAtr + "</section>";
 
@@ -45,21 +45,6 @@
                 }
             }
         });
-      // var icons = new Array("head01.jpg","head02.jpg","head03.jpg","head04.jpg");
-      // var names = new Array("小张","小万","小潘");
-      // $("#send").click(function(){
-        // var $text = $("chatText");
-          // var iconsnum = Math.floor(Math.random()*4);
-          // var imgs = '<img src="../images/head01.jpg"';
-         
-          // var namesnum = Math.floor(Math.random()*3);
-          // $("#tp").html("imgs");
-          // $("h6").text("names[namesnum]");
-        // $(".chatText").val().appendTo("#sr")
-      //   $("#sr").append($(".chatText"));
-      //     $(".chatBody").append($("#tab"));
-      // });
-      // });
     </script>
     <style>
       .puts{
@@ -69,20 +54,30 @@
         width: 100%;
         height: 20px;
       }
+      .t1{
+        float: left;
+        margin: 10px;
+      }
+      .t2{
+        height: 33px;
+        text-align: center;
+        line-height: 33px;
+        font-size: 16px;
+        margin-top: 10px;
+        font-weight: 800;
+        color: rgb(46, 52, 134);
+      }
+      .t3{
+        margin-left: 50px;
+        width: 330px;
+        line-height: 30px;
+        border-radius: 10px;
+        padding-left: 10px;
+        background-color: rgb(245, 236, 236);
+      }
     </style>
 </head>
 <body>
-  <!-- <section>
-    <table id="tab">
-      <tr>
-        <td rowspan="2" id="tp"><img src="../images/head01.jpg" alt=""></td>
-        <td><h6>546231</h6></td>
-      </tr>
-      <tr>
-        <td><span id="sr"></span></td>
-      </tr>
-    </table>
-  </section> -->
 <section id="chat">
     <div class="chatBody">
       <div class="tp">
