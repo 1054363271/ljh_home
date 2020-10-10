@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let obj={
+      id:1,
+      name:"pink",
+      msg:{
+        age:18
+      }
+    };
+    let o = {};
+    //浅拷贝 只拷贝一层，更深层次对象级别的只拷贝引用
+    for (var k in obj){
+      o[k] = obj[k];
+    }
+     console.log(o);
+     o.msg.age = 22;
+     //修改拷贝后的数据  原数据会改变  这就是浅拷贝
+     console.log(obj);
+
+    //浅拷贝语法糖
+    let p = {};
+    Object.assign(p,obj);
+    console.log(p);
+    p.msg.age = 30;
+    console.log(obj);
+
+
+
+
+    //深拷贝  拷贝多层，每一级别的数据都会拷贝
+    var newobj = {};
+    function deepCopy(newobj,oldobj){
+      for(let i in oldobj){
+        var item = oldobj[i];
+        if(item instanceof Array){
+          newobj[i] = [];
+          deepCopy(newobj[i],item)
+        }else if(item instanceof Object){
+          newobj[i] = {};
+          deepCopy(newobj[i],item)
+        }
+        else{
+          newobj[i] = item;
+        }
+      }
+    }
+    deepCopy(o,obj);
+    console.log(o);
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //字符类:[] 表示有一系列字符可供选择，只要匹配其中一个就可以了
+    let rg = /[abc]/;//只要包含有其中随便一个就为true
+    console.log(rg.test('andy'));//true
+    console.log(rg.test('baby'));//true
+    console.log(rg.test('color'));//true
+    console.log(rg.test('red'));//false
+
+    let reg = /^[abc]$/;//三选一 只有是a 或者是b  或者是c  才会返回true
+    console.log(reg.test('a'));//true
+    console.log(reg.test('ab'));//false
+    console.log(reg.test('abcd'));//false
+
+    console.log('------------------------------------');
+
+    let rg1 = /^[a-z]$/;//26个英文字母任意一个字母返回true
+    console.log(rg1.test('a'));//true 
+    console.log(rg1.test('ab'));//false
+    console.log(rg1.test('m'));//true
+
+    console.log('------------------------------------');
+
+    let rg2 = /^[a-zA-Z0-9_-]$/;//26个英文字母（大写小写都可）或者0到10或者_或者-的中的任意一个才返回true
+    console.log(rg2.test('a'));//true
+    console.log(rg2.test('C'));//true
+    console.log(rg2.test('a1'));//false
+    console.log(rg2.test('!'));//false
+    console.log(rg2.test('5'));//true
+
+    console.log('---------------------------------------');
+
+    let rg3 = /^[^a-zA-Z0-9_-]$///[]中加个^表示取反  不是26个英文字母（大写小写都可）或者0到10或者_或者-的中的任意一个才返回true
+    console.log(rg3.test('a'));//false
+    console.log(rg3.test('C'));//false
+    console.log(rg3.test('-'));//false
+    console.log(rg3.test('!'));//true
+    console.log(rg3.test('5'));//false
+  </script>
+</body>
+</html>

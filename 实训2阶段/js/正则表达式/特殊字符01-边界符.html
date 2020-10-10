@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //边界符 开始^  结尾$
+    let rg = /abc/;//只要包含abc就是true
+    console.log(rg.test('abcd'));//true
+
+    let reg = /^abc/;//必需以abc开头
+    console.log(reg.test('abc'));//true
+    console.log(reg.test('abcd'));//true
+    console.log(reg.test('aabcd'));//false
+
+    let reg1 = /^abc$/;//必需是abc字符才符合
+    console.log(reg1.test('abc'));//true
+    console.log(reg1.test('abcd'));//false
+    console.log(reg1.test('aabcd'));//false
+  </script>
+</body>
+</html>

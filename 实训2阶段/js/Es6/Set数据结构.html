@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //Set数据结构  类似于数组，但是成员的值都是唯一的，没有重复的值
+    const s = new Set();
+    console.log(s.size);
+    const s1 = new Set([1,2])
+    console.log(s1.size);
+    const s3 = new Set([1,2,2,3,1])
+    console.log(s3.size);
+    let array = [...s3];
+    console.log(array);
+
+    //实例方法
+    //1、add(value):添加某个值，返回Set结构本身
+    //2、delete(value):删除某个值，返回一个布尔值，表示删除是否成功
+    //3、has(value):返回一个布尔值，表示该值是否为Set成员
+    //4、clear():清除所有成员，没有返回值
+    const t = new Set();
+    console.log(t.add(2).add(1));
+    console.log(t.delete(2));
+    console.log(t.has(1));
+    console.log(s.clear());
+    //遍历 Set结构的实例与数组一样，也拥有forEach（）方法，对于每一个成员执行某种操作，。没有返回值
+
+    const r = new Set(['a','b','c']);
+    r.forEach(value => console.log(value));
+  </script>
+</body>
+</html>

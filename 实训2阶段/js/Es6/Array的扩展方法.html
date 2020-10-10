@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Array.from()
+    //将伪数组转换为数组  方法还可以接受第二个参数，作用类似于map方法，用于对每个元素进行处理，将处理后的值放入返回的数组
+    let arrayLike = {
+      '0': '1',
+      '1': '2',
+      'length':3
+    }
+    let newAry = Array.from(arrayLike,item => item*2);
+    console.log(newAry);
+
+    //find((item值，index索引))用于找出第一个符合条件的数组成员，如果没有找到返回undefined
+
+    let ary = [{
+      id: 1,
+      name: '张三'
+    },{
+      id: 2,
+      name: '李四'
+    }];
+    let target = ary.find(item => item.id == 2);
+    console.log(target);
+
+    // findIndex((value值,index索引))用于查找第一个符合条件的数组成员的位置，没有找到返回-1
+    let ary2 = [1,5,2,15];
+    let index = ary2.findIndex(value => value > 9);
+    console.log(index);//3
+
+    //includes()表示某个数组是否包含给定的值，返回布尔值
+    let ary3 = [1,2,3].includes(2);
+    let ary4 = [4,5,3].includes(1);
+    console.log(ary3);//true
+    console.log(ary4);//false
+  </script>
+</body>
+</html>

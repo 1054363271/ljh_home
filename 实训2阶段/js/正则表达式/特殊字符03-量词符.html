@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //量词符  用来设定某个模式出现的次数
+    //符号表示 *重复零次或者更多次  +重复一次或者更多次  ？重复零次或者一次
+    //花括号表示  {n}重复n次  {n,}重复n次或更多次  {n,m}重复n到m次
+
+    //*重复零次或者更多次
+    let reg1 =  /^a*$/;
+    console.log(reg1.test(''));//true
+    console.log(reg1.test('bb'));//false
+    console.log(reg1.test('aaa'));//true
+    console.log(reg1.test('abb'));//false
+
+    console.log('--------------------------');
+
+    //+重复一次或者更多次
+    let reg2 = /^a+$/;
+    console.log(reg2.test(''));//false
+    console.log(reg2.test('aaa'));//true
+    console.log(reg2.test('abb'));//false
+    console.log(reg2.test('a'));//true
+
+    console.log('-------------------------');
+
+    //？重复零次或者一次
+    let reg3 = /^a?$/;
+    console.log(reg3.test(''));//true
+    console.log(reg3.test('aa'));//false
+    console.log(reg3.test('a'));//true
+    console.log(reg3.test('ab'));//false
+    
+    console.log('-------------------------');
+
+    //{n}重复n次
+    let reg4 = /^a{3}$/;
+    console.log(reg4.test(''));//false
+    console.log(reg4.test('aaa'));//true
+    console.log(reg4.test('a'));//false
+    console.log(reg4.test('ab'));//false
+       
+    console.log('-------------------------');
+
+    //{n,}重复n次或更多次
+    let reg5 = /^a{3,}$/;
+    console.log(reg5.test(''));//false
+    console.log(reg5.test('aaa'));//true
+    console.log(reg5.test('a'));//false
+    console.log(reg5.test('aaaa'));//true
+        
+    console.log('-------------------------');
+
+    //{n,m}重复n次或更多次
+    let reg6 = /^a{3,5}$/;
+    console.log(reg6.test(''));//false
+    console.log(reg6.test('aaa'));//true
+    console.log(reg6.test('aaaaaa'));//false
+    console.log(reg6.test('aaaa'));//true
+
+    console.log('-------------------------');
+
+    //表单验证
+    let rg = /^[a-zA-Z0-9_-]{6,16}$/;//这个模式用户只能输入英文字母、数字、下划线、以及-，并且在6到16位之间
+    console.log(rg.test('aaaaaa'));//true
+    console.log(rg.test('aaaa'));//false
+    console.log(rg.test('aaaadf123'));//true
+
+  </script>
+</body>
+</html>
